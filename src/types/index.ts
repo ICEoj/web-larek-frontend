@@ -21,31 +21,32 @@ export interface IEventManager {
 
 export interface IFormState {
     isValid: boolean;
-    errorMessages: string[];
+    error: string;
 }
 
 export interface IProduct {
     name: string;
     id: string;
     category: string;
-    imageUrl: string;
+    image: string;
     description: string;
     price: number | null;
+    index: number | null;
 }
 
 export interface IPaymentForm {
     address: string;
-    paymentMethod: PaymentMethod;
+    payment: PaymentMethod;
 }
 
 export interface IContactsForm {
-    phoneNumber: string;
+    phone: string;
     email: string;
 }
 
 export interface IOrder extends IPaymentForm, IContactsForm {
-    totalAmount: number;
-    orderedItems: string[];
+    total: number;
+    items: string[];
 }
 
 export interface IBasket {
@@ -54,7 +55,7 @@ export interface IBasket {
 }
 
 export interface IModalContent {
-    contentElement: HTMLElement;
+    contentElement: HTMLElement[];
 }
 
 export interface IActionHandlers {
@@ -62,12 +63,12 @@ export interface IActionHandlers {
 }
 
 export interface ISuccessResponse {
-    totalAmount: number;
+    total: number;
 }
 
 export interface IOrderResult {
     orderId: string;
-    totalAmount: number | null;
+    total: number | null;
 }
 
 export interface IPageState {
@@ -81,3 +82,4 @@ export interface ILarekAPI {
     getProductDetails: (productId: string) => Promise<IProduct>;
     placeOrder: (order: IOrder) => Promise<IOrderResult>;
 }
+

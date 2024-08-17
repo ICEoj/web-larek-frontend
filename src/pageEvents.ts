@@ -143,5 +143,3 @@ export function addEvents(events: EventEmitter, page: Page, dataStore: DataStore
 		modal.close();
 	})
 }
-
-

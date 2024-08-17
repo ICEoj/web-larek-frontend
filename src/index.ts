@@ -23,68 +23,7 @@ const basket = new Basket(cloneTemplate(ensureElement<HTMLTemplateElement>('#bas
 const paymentForm = new PaymentForm(cloneTemplate(ensureElement<HTMLTemplateElement>('#order')), events)
 const contactsForm = new ContactForm(cloneTemplate(ensureElement<HTMLTemplateElement>('#contacts')), events)
 const succes = new Success(cloneTemplate(ensureElement<HTMLTemplateElement>('#success')), events)
-// const order = new 
-// const cardTemplate = ensureElement<HTMLTemplateElement>('#card-preview');
 
 addEvents(events, page, dataStore, modal, basket, paymentForm, contactsForm, api, succes);
 
 api.getProducts().then((result: ApiResponseList<IProduct>) => dataStore.catalog = result.items);
-
-//
-// test.getProducts().then((result: ApiResponseList<IProduct>) => result.items.map((item) => {
-// 	const card = new Card(cloneTemplate(cardTemplate))
-// 	const node = card.render({
-// 		...item, image: CDN_URL + item.image,
-//     })
-//     mainEl.appendChild(node)
-//
-// }))
-// test.getProduct('854cef69-976d-4c2a-a18c-2aa45046c390').then((result) => console.log(result))
-
-
-
-
-
-// const data = {
-// 	"id": "854cef69-976d-4c2a-a18c-2aa45046c390",
-// 	"description": "Если планируете решать задачи в тренажёре, берите два.",
-// 	"image": "https://larek-api.nomoreparties.co/content/weblarek/5_Dots.svg",
-// 	"title": "+1 час в сутках",
-// 	"category": "софт-скил",
-// 	"price": null as number
-//
-// }
-// card.render(data)
-// console.log(card)
-
-// const tp = document.getElementById("card-catalog") as HTMLTemplateElement
-// const n = tp.content.firstElementChild.cloneNode(true)
-// const res = mainEl.appendChild(n)
-// console.log(n)
-// abstract class AbstractHuyna {
-//     constructor( data: any) {
-//         Object.assign(this, data)
-//     }
-// }
-//
-// class Huyna extends AbstractHuyna{
-//     _dolbayob: string;
-//     constructor(data: any) {
-//         super(data)
-//     }
-//
-//     set dolbayob(value: string) {
-//         console.log("Придорасы изменили долбаёба")
-//         this._dolbayob = value
-//     }
-// }
-//
-// const data = {
-//     dolbayob: "Пидорас",
-//     pole: "pole"
-// }
-//
-// const huyna = new Huyna(data)
-//
-// console.log(huyna)
-// // huyna.dolbayob = "dsdsf"

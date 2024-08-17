@@ -8,7 +8,6 @@ export class ElementComponent<T extends HTMLElement | HTMLImageElement | HTMLBut
 
 		try {
 			this.container = ensureElement<T>(selector, context)
-			// console.log(this.container)
 		}
 		catch (E) {
 			

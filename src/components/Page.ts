@@ -1,4 +1,3 @@
-import {ensureElement} from "../utils/utils";
 import {EventEmitter} from "./base/events";
 import { ElementComponent } from './base/ElementComponent';
 

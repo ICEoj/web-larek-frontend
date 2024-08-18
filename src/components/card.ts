@@ -38,7 +38,7 @@ export class Card extends Component<IProduct> {
 	set price(value: number | null) {
 		this._price.setText((value) ? `${value.toString()} синапсов` : 'Бесценно')
 	}
-	set category(value: string) { //TODO сделать перечисление
+	set category(value: string) { 
 		if (!this._category) return;
 		this._category.setText(value);
 		switch (value) {
@@ -75,5 +75,8 @@ export class Card extends Component<IProduct> {
 	set index(value: number) {
 		this._index.setText(String(value))
 	}
+	set disabled(value: boolean) {
+        this._button.disabled = value;
+    }
 
 }

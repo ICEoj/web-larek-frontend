@@ -3,6 +3,8 @@ import { Component } from "./Component";
 import { ElementComponent } from "./ElementComponent";
 import { EventEmitter } from "./events";
 
+
+
 export class Form<T> extends Component<IFormState, HTMLFormElement> {
     _submit : ElementComponent<HTMLButtonElement>
     _errors : ElementComponent<HTMLElement>

@@ -3,7 +3,7 @@ import { Card } from './components/card';
 import { cloneTemplate, ensureElement } from './utils/utils';
 import { EventEmitter } from './components/base/events';
 import { Page } from './components/Page';
-import { DataStore } from './DataStore';
+import { DataStore } from './components/DataStore';
 import { Modal } from './components/Modal';
 import { Basket } from './components/basket';
 import { ContactForm, PaymentForm } from './components/order';
@@ -51,8 +51,9 @@ export function addEvents(events: EventEmitter, page: Page, dataStore: DataStore
 					card.buttonTitle = 'Убрать из корзины';
 				}
 			}
+			
 		})
-
+		card.disabled = !item.price
 		card.buttonTitle = dataStore.inBasket(item) ? 'Убрать из корзины' : 'В корзину';
 
 		modal.render({
@@ -69,13 +70,13 @@ export function addEvents(events: EventEmitter, page: Page, dataStore: DataStore
 	events.on('basket:change', () => {
 		page.counter = dataStore.basket.items.length
 		basket.valid = dataStore.basket.items.length == 0 ? false : true;
-		basket.listItems = dataStore.basket.items.map((id, index) => {
+		basket.listItems = dataStore.basket.items.map((id: string, index : number) => {
 			const card = new Card(cloneTemplate(basketItem), {
 				onClick: () => {
 					dataStore.removeBasket(id)
 				}
 			})
-			const data: IProduct = dataStore._catalog.find((item:IProduct) => item.id == id )
+			const data: IProduct = dataStore.findProduct(id)
 			return card.render({...data, index:index+1})
 		})
 		basket.price = dataStore.basket.totalAmount;

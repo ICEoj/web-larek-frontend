@@ -5,7 +5,7 @@ import { API_URL, CDN_URL } from './utils/constants'
 import { ApiResponseList, IProduct } from './types/index';
 import { ApiHandler } from './components/ApiHandler'
 import { EventEmitter } from './components/base/events';
-import { DataStore } from './DataStore';
+import { DataStore } from './components/DataStore';
 import { addEvents } from './pageEvents';
 import { Modal } from './components/Modal';
 import { ensureElement, cloneTemplate } from './utils/utils';
@@ -24,6 +24,9 @@ const paymentForm = new PaymentForm(cloneTemplate(ensureElement<HTMLTemplateElem
 const contactsForm = new ContactForm(cloneTemplate(ensureElement<HTMLTemplateElement>('#contacts')), events)
 const succes = new Success(cloneTemplate(ensureElement<HTMLTemplateElement>('#success')), events)
 
+
+
+
 addEvents(events, page, dataStore, modal, basket, paymentForm, contactsForm, api, succes);
 
-api.getProducts().then((result: ApiResponseList<IProduct>) => dataStore.catalog = result.items);
+api.getProducts().then((result: ApiResponseList<IProduct>) => dataStore.catalog = result.items).catch(console.error);

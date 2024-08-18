@@ -1,6 +1,6 @@
-import { IProduct, IBasket, IOrder, OrderForm, PaymentMethod, FormValidationErrors } from './types';
-import { EventEmitter } from './components/base/events';
-import { CDN_URL } from './utils/constants';
+import { IProduct, IBasket, IOrder, OrderForm, PaymentMethod, FormValidationErrors } from '../types';
+import { EventEmitter } from './base/events';
+import { CDN_URL } from '../utils/constants';
 
 
 export class DataStore {
@@ -25,8 +25,8 @@ export class DataStore {
 		this._events = events
 	}
 
-	set catalog(new_catalog: IProduct[]) {
-		this._catalog = new_catalog
+	set catalog(newCatalog: IProduct[]) {
+		this._catalog = newCatalog
 		this._catalog.forEach((item) => item.image = CDN_URL + item.image)
 
 		this._events.emit("catalog:change", this._catalog)
@@ -88,5 +88,7 @@ export class DataStore {
         this._events.emit('formErrors:change', this.formErrors);
         return Object.keys(errors).length === 0;
     }
+
+	findProduct(id: string) {return this._catalog.find((item:IProduct) => item.id == id )}
 
 }
